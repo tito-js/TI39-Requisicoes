@@ -9,6 +9,26 @@ function App() {
 	const [ txtPokemon, alteraTxtPokemon ] = React.useState("");
 
 	function buscaPokemon(){
+
+		// Etapa 2
+		if(txtPokemon == ""){
+			buscaTodosPokemons();
+			return;
+		}
+
+
+		// Etapa 1
+		axios.get("https://pokeapi.co/api/v2/pokemon/" + txtPokemon)
+		.then( response => { // Será executado quando a requisição terminar
+			console.log("Requisição bem sucedida!");
+			alteraPokemons( [response.data]);
+		} )  
+		.catch( response => { // É executado quando dá erro na requisição
+			alert("Esse Pokémon não existe")
+			console.log("Deu ruim na requisição");
+			console.log(response);
+		} ) 
+
 		// ATIVIDADE!
 		// ---- Etapa 1
 		// Fazer uma requisição para o endereço abaixo:
@@ -33,7 +53,7 @@ function App() {
 		axios.get("https://pokeapi.co/api/v2/pokemon?limit=50")
 		.then( response => { // Será executado quando a requisição terminar
 			console.log("Requisição bem sucedida!");
-			alteraPokemons( response.data.results );
+			alteraPokemons(response.data.results);
 			console.log(response.data.results)
 		} )  
 		.catch( response => { // É executado quando dá erro na requisição
@@ -54,7 +74,7 @@ function App() {
 	return (
 		<div>
 
-			<h1> Conradito PokéDex </h1>
+			<h1> Gabs PokéDex </h1>
 			<p> Conheça os Pokémons mais famosos </p>
 
 
