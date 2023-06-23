@@ -16,7 +16,6 @@ function App() {
 			return;
 		}
 
-
 		// Etapa 1
 		axios.get("https://pokeapi.co/api/v2/pokemon/" + txtPokemon)
 		.then( response => { // Será executado quando a requisição terminar
@@ -40,9 +39,6 @@ function App() {
 		// ---- Etapa 2
 		// SE a pessoa não digitar nada, ou seja, enviar o campo vazio:
 		//    -> Volte a mostrar todos os pokemons
-
-
-
 	}
 
 	function buscaTodosPokemons(){
